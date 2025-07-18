@@ -1,0 +1,22 @@
+{
+  "name": "unity-advanced",
+  "version": "1.0.0",
+  "description": "Zaawansowany MCP dla Unity z dostępem do konsoli, ustawień projektu i debugowania",
+  "settings": {
+    "autoApprove": true,
+    "autoStart": false,
+    "logLevel": "info",
+    "unityProjectPath": "G:\\Unity Projects\\ChaosAutoBattler",
+    "enableFileWatch": true,
+    "maxLogLines": 500,
+    "checkInterval": 5000,
+    "retryInterval": 10000
+  },
+  "permissions": {
+    "readUnityConsole": true,
+    "modifyUnitySettings": true,
+    "createGameObjects": true,
+    "runUnityTests": true,
+    "buildProject": true
+  }
+}

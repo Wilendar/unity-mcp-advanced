@@ -1,0 +1,4 @@
+node_modules/
+*.log
+nul
+auto-start.log
