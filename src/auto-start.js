@@ -45,11 +45,19 @@ class AutoStartMCP {
 
   async checkUnityProcess() {
     return new Promise((resolve) => {
-      exec('tasklist /FI "IMAGENAME eq Unity.exe"', (error, stdout, stderr) => {
+      // Użyj PowerShell dla kompatybilności z Windows
+      const command = process.platform === 'win32' 
+        ? 'powershell -Command "tasklist /FI \\"IMAGENAME eq Unity.exe\\""'
+        : 'tasklist /FI "IMAGENAME eq Unity.exe"';
+      
+      exec(command, (error, stdout, stderr) => {
         if (error) {
+          console.log('[Auto-Start] Unity check error:', error.message);
           resolve(false);
         } else {
-          resolve(stdout.toLowerCase().includes('unity.exe'));
+          const isRunning = stdout.toLowerCase().includes('unity.exe');
+          console.log('[Auto-Start] Unity check result:', isRunning);
+          resolve(isRunning);
         }
       });
     });

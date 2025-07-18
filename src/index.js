@@ -131,6 +131,25 @@ class UnityMCPServer {
           }
         },
         {
+          name: 'get_console_entries',
+          description: 'Odczytuje rzeczywiste wpisy z konsoli Unity (używa LogEntries API)',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              filter: {
+                type: 'string',
+                enum: ['all', 'errors', 'warnings', 'logs'],
+                description: 'Filtr typu logów'
+              },
+              last_lines: {
+                type: 'number',
+                description: 'Ilość ostatnich linii do odczytania',
+                default: 50
+              }
+            }
+          }
+        },
+        {
           name: 'clear_unity_console',
           description: 'Czyści konsolę Unity',
           inputSchema: {
@@ -677,6 +696,8 @@ class UnityMCPServer {
         switch (name) {
           case 'read_unity_console':
             return await this.readUnityConsole(args);
+          case 'get_console_entries':
+            return await this.getConsoleEntries(args);
           case 'clear_unity_console':
             return await this.clearUnityConsole();
           case 'send_debug_log':
@@ -2086,6 +2107,47 @@ try {
         }
       ]
     };
+  }
+
+  async getConsoleEntries(args = {}) {
+    const { filter = 'all', last_lines = 50 } = args;
+    
+    try {
+      // Użyj Unity Bridge do odczytu rzeczywistej konsoli Unity
+      const isRunning = await this.getUnityBridge().isUnityRunning();
+      if (isRunning) {
+        try {
+          const result = await this.getUnityBridge().sendCommand('get_console_entries', {
+            filter: filter,
+            last_lines: last_lines
+          });
+          
+          return {
+            content: [
+              {
+                type: 'text',
+                text: result.content || 'Brak wpisów w Unity Console'
+              }
+            ]
+          };
+        } catch (error) {
+          console.error('[MCP Unity Advanced] Błąd Unity Bridge:', error.message);
+          console.log('[MCP Unity Advanced] Unity Bridge nie działa, używam PowerShell fallback:', error.message);
+        }
+      }
+
+      // Fallback - używaj read_unity_console jako backup
+      return await this.readUnityConsole(args);
+    } catch (error) {
+      return {
+        content: [
+          {
+            type: 'text',
+            text: `Błąd odczytu konsoli Unity: ${error.message}`
+          }
+        ]
+      };
+    }
   }
 
   async clearUnityConsole() {
