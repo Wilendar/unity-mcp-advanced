@@ -1,214 +1,343 @@
-# MCP Unity Advanced
+# Unity MCP Advanced 🚀
 
-Zaawansowany Model Context Protocol (MCP) serwer dla Unity Engine, zaprojektowany do pracy z Claude Code i innymi asystentami AI.
+**Zaawansowane narzędzie integracji Unity z Claude Code poprzez protokół MCP**
 
-**Autor:** Kamil Wiliński
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Unity](https://img.shields.io/badge/Unity-2022.3%2B-blue.svg)](https://unity.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-18.x%2B-green.svg)](https://nodejs.org/)
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue.svg)](https://docs.microsoft.com/powershell/)
 
-## 🎯 Funkcjonalności
+## 🎯 Czym jest Unity MCP Advanced?
 
-### 🔍 Konsola i Debugowanie
-- **read_unity_console** - Odczytuje logi Unity z filtrami (błędy, warnings, debug)
-- **clear_unity_console** - Czyści konsolę Unity
-- **send_debug_log** - Wysyła debug logi do Unity
-- **get_compilation_errors** - Pobiera błędy kompilacji
+Unity MCP Advanced to kompleksowe rozwiązanie umożliwiające bezpośrednie zarządzanie projektami Unity poprzez Claude Code. Wykorzystuje protokół MCP (Model Context Protocol) do zapewnienia 32 zaawansowanych narzędzi do debugowania, testowania i zarządzania projektami Unity.
 
-### ⚙️ Projekt i Ustawienia  
-- **get_unity_project_settings** - Pobiera ustawienia projektu Unity
-- **update_unity_project_settings** - Aktualizuje ustawienia projektu
-- **get_script_compilation_status** - Sprawdza status kompilacji skryptów
-- **reload_assemblies** - Przeładowuje assemblies Unity
+### ✨ Kluczowe Funkcje
 
-### 🎮 Sceny i GameObjects
-- **get_active_scene_info** - Informacje o aktywnej scenie
-- **select_gameobject** - Zaznacza GameObject w Unity
-- **create_gameobject** - Tworzy nowy GameObject z komponentami
+- **32 narzędzia MCP** do zarządzania Unity
+- **Automatyczne uruchamianie** serwera MCP
+- **Real-time komunikacja** z Unity Editor
+- **Zarządzanie hierarchią** obiektów
+- **Kontrola Play Mode** i debugowanie
+- **Zarządzanie prefabami** i komponentami
+- **Testowanie GameManager** i custom scripts
+- **Auto-focus** okna Unity
+- **Robust error handling** z ThreadAbortException
 
-### 🧪 Testy i Build
-- **run_unity_tests** - Uruchamia testy Unity (EditMode/PlayMode)
-- **build_unity_project** - Buduje projekt dla różnych platform
-- **execute_unity_menu** - Wykonuje opcje z menu Unity
+## 🚀 Szybki Start
 
-### 📊 Monitoring i Performance
-- **get_unity_performance_stats** - Statystyki wydajności Unity
-- **watch_project_changes** - Monitoruje zmiany w projekcie
+### Instalacja
 
-## 📦 Instalacja
-
-### Wymagania
-- Node.js >= 18.0.0
-- Unity Editor (2022.3 LTS lub nowszy)
-- Claude Code lub inny klient MCP
-
-### Kroki instalacji
-
-1. **Przejdź do katalogu MCP:**
 ```bash
-cd "G:\\Unity Projects\\ChaosAutoBattler\\mcp-unity-advanced"
-```
+# Klonuj repozytorium
+git clone https://github.com/wilendar/unity-mcp-advanced.git
+cd unity-mcp-advanced
 
-2. **Zainstaluj zależności:**
-```bash
+# Zainstaluj zależności
+cd mcp-unity-advanced
 npm install
+
+# Skopiuj Unity Bridge do projektu
+cp -r UnityMcpBridge YourProject/Assets/Editor/
+
+# Skonfiguruj Claude Code MCP
+claude mcp add unity-mcp-advanced "node path/to/mcp-unity-advanced/src/index.js"
 ```
 
-3. **Skonfiguruj w Claude Code:**
+### Pierwsze użycie
+
 ```bash
-claude mcp add unity-advanced "node G:\\Unity Projects\\ChaosAutoBattler\\mcp-unity-advanced\\src\\index.js"
+# Uruchom Unity z projektem
+# Uruchom Claude Code
+claude
+
+# Przetestuj komunikację
+> Sprawdź konsole Unity
+> Sprawdź błędy kompilacji
+> Uruchom tryb Play
 ```
 
-4. **Weryfikuj instalację:**
+## 📋 Dostępne Narzędzia
+
+### 🔧 Podstawowe Debugowanie
+| Narzędzie | Opis |
+|-----------|------|
+| `read_unity_console` | Odczyt logów Unity (błędy, warnings, debug) |
+| `clear_unity_console` | Czyszczenie konsoli Unity |
+| `get_compilation_errors` | Sprawdzenie błędów kompilacji |
+| `send_debug_log` | Wysłanie debug log do Unity |
+| `focus_unity_window` | Wymuszenie focus okna Unity |
+
+### 🎮 Kontrola Play Mode
+| Narzędzie | Opis |
+|-----------|------|
+| `start_play_mode` | Uruchomienie trybu Play |
+| `stop_play_mode` | Zatrzymanie trybu Play |
+| `get_play_mode_status` | Sprawdzenie statusu trybu Play |
+
+### 🗂️ Zarządzanie Hierarchią
+| Narzędzie | Opis |
+|-----------|------|
+| `get_hierarchy_objects` | Lista obiektów w hierarchii |
+| `select_hierarchy_object` | Zaznaczenie obiektu w hierarchii |
+| `create_hierarchy_object` | Tworzenie nowego obiektu |
+| `delete_hierarchy_object` | Usuwanie obiektu z hierarchii |
+
+### 🔧 Zarządzanie Komponentami
+| Narzędzie | Opis |
+|-----------|------|
+| `get_component_properties` | Pobieranie właściwości komponentu |
+| `set_component_property` | Ustawienie właściwości komponentu |
+| `add_component` | Dodanie komponentu do obiektu |
+| `remove_component` | Usunięcie komponentu z obiektu |
+
+### 🧩 Zarządzanie Prefabami
+| Narzędzie | Opis |
+|-----------|------|
+| `create_prefab` | Tworzenie prefaba z GameObject |
+| `save_prefab` | Zapisywanie prefaba do pliku |
+| `load_prefab` | Ładowanie prefaba i tworzenie instancji |
+| `create_placeholder_prefab` | Tworzenie placeholder prefaba |
+| `list_prefabs` | Lista wszystkich prefabów w projekcie |
+
+### 🎯 Testowanie GameManager
+| Narzędzie | Opis |
+|-----------|------|
+| `trigger_gamemanager_method` | Wywołanie metody GameManager |
+| `get_gamemanager_state` | Pobieranie stanu GameManager |
+
+### ⚙️ Zarządzanie Projektem
+| Narzędzie | Opis |
+|-----------|------|
+| `get_unity_project_settings` | Pobieranie ustawień projektu |
+| `update_unity_project_settings` | Aktualizacja ustawień projektu |
+| `get_active_scene_info` | Informacje o aktywnej scenie |
+| `execute_unity_menu` | Wykonanie opcji menu Unity |
+
+## 🏗️ Architektura
+
+```
+Unity MCP Advanced
+├── Unity Bridge (C#)
+│   ├── UnityTcpServer.cs      # TCP server (port 6401)
+│   └── SimpleMcpBridge.cs     # Unity MCP window
+├── MCP Server (Node.js)
+│   ├── index.js               # Główny serwer MCP
+│   ├── unity-bridge.js        # Bridge do Unity
+│   └── auto-start.js          # Auto-start funkcjonalność
+└── PowerShell Scripts
+    └── start-mcp-unity.ps1    # Startup script
+```
+
+### Przepływ Komunikacji
+
+```
+Claude Code → MCP Server → TCP (port 6401) → Unity Editor
+         ←               ←                  ←
+```
+
+## 📖 Przykłady Użycia
+
+### Debugowanie Projektu
+
 ```bash
-claude mcp list
+# Sprawdź błędy kompilacji
+> Sprawdź czy mój kod Unity ma błędy kompilacji
+
+# Odczytaj konsole Unity
+> Pokaż mi ostatnie 30 linii z konsoli Unity
+
+# Wymusz focus Unity window
+> Wymuś focus okna Unity na pierwszy plan
+```
+
+### Zarządzanie Obiektami
+
+```bash
+# Sprawdź hierarchię
+> Pokaż mi wszystkie obiekty w hierarchii Unity
+
+# Utwórz nowy obiekt
+> Utwórz nowy GameObject o nazwie "TestPlayer" typu Cube
+
+# Dodaj komponent
+> Dodaj komponent Rigidbody do obiektu "TestPlayer"
+
+# Sprawdź właściwości
+> Sprawdź właściwości komponentu Transform obiektu "TestPlayer"
+```
+
+### Testowanie Gry
+
+```bash
+# Uruchom tryb Play
+> Uruchom tryb Play w Unity
+
+# Przetestuj GameManager
+> Wywołaj metodę "StartGame" w GameManager
+
+# Sprawdź stan
+> Sprawdź aktualny stan GameManager
+
+# Zatrzymaj tryb Play
+> Zatrzymaj tryb Play w Unity
+```
+
+### Zarządzanie Prefabami
+
+```bash
+# Sprawdź prefaby
+> Pokaż mi listę wszystkich prefabów w projekcie
+
+# Utwórz prefab
+> Utwórz prefab z obiektu "TestPlayer" i zapisz go jako "PlayerPrefab"
+
+# Załaduj prefab
+> Załaduj prefab "PlayerPrefab" na pozycji (10, 0, 5)
 ```
 
 ## 🔧 Konfiguracja
 
-### Automatyczne wykrywanie projektów Unity
-MCP automatycznie wykrywa:
-- Ścieżkę projektu Unity
-- Lokalizację logów Unity
-- Ustawienia projektu
+### Konfiguracja Serwera
 
-### Ścieżki logów Unity
-MCP sprawdza standardowe lokalizacje:
-- Windows: `%APPDATA%\\Unity\\Editor\\Editor.log`
-- macOS: `~/Library/Logs/Unity/Editor.log`
-- Linux: `/tmp/UnityLogs/Editor.log`
+Edytuj `mcp-unity-advanced/config.json`:
 
-## 🚀 Przykłady użycia
-
-### Odczyt konsoli Unity
-```javascript
-// Pobierz wszystkie logi
-await callTool('read_unity_console', { filter: 'all', last_lines: 100 });
-
-// Tylko błędy
-await callTool('read_unity_console', { filter: 'errors', last_lines: 50 });
-
-// Tylko warnings
-await callTool('read_unity_console', { filter: 'warnings' });
+```json
+{
+  "server": {
+    "port": 6401,
+    "host": "localhost",
+    "timeout": 30000
+  },
+  "settings": {
+    "autoStart": true,
+    "checkInterval": 5000,
+    "retryInterval": 10000,
+    "maxRetries": 3,
+    "autoApprove": true,
+    "logLevel": "info"
+  },
+  "unity": {
+    "projectPath": "auto-detect",
+    "logPath": "auto-detect",
+    "processName": "Unity.exe"
+  }
+}
 ```
 
-### Zarządzanie projektem
-```javascript
-// Pobierz ustawienia projektu
-await callTool('get_unity_project_settings', { category: 'player' });
+### Auto-Start
 
-// Sprawdź błędy kompilacji
-await callTool('get_compilation_errors');
-
-// Uruchom testy
-await callTool('run_unity_tests', { test_mode: 'editmode' });
-```
-
-### Manipulacja sceną
-```javascript
-// Informacje o scenie
-await callTool('get_active_scene_info', { include_gameobjects: true });
-
-// Stwórz GameObject
-await callTool('create_gameobject', {
-  name: 'Player',
-  components: ['Rigidbody', 'BoxCollider']
-});
-```
-
-## 📋 Zasoby (Resources)
-
-### unity://console/logs
-Dostęp do live logów konsoli Unity
-
-### unity://project/settings  
-Ustawienia projektu Unity w formacie JSON
-
-### unity://compilation/errors
-Aktualne błędy i warnings kompilacji
-
-## 🔨 Development
-
-### Struktura projektu
-```
-mcp-unity-advanced/
-├── src/
-│   └── index.js          # Główny serwer MCP
-├── package.json          # Konfiguracja npm
-├── README.md            # Dokumentacja
-└── unity-bridge/        # Unity package (planowane)
-```
-
-### Uruchomienie w trybie dev
 ```bash
-npm run dev
+# Uruchom z auto-start
+node src/index.js --auto-start
+
+# Lub użyj PowerShell script
+./start-mcp-unity.ps1
+
+# W tle
+./start-mcp-unity.ps1 -Background
 ```
 
-### Testowanie
+## 🔍 Rozwiązywanie Problemów
+
+### Typowe Problemy
+
+1. **TCP Server nie startuje**
+   - Sprawdź czy port 6401 jest wolny
+   - Sprawdź czy Unity jest uruchomiony
+   - Sprawdź logi Unity Console
+
+2. **Błędy kompilacji**
+   - Sprawdź czy Unity Bridge jest poprawnie skopiowany
+   - Sprawdź czy wszystkie zależności są zainstalowane
+   - Sprawdź czy Unity używa .NET Standard 2.1
+
+3. **MCP nie łączy się**
+   - Sprawdź konfigurację Claude Code MCP
+   - Sprawdź czy serwer Node.js jest uruchomiony
+   - Sprawdź logi w konsoli
+
+### Diagnostyka
+
 ```bash
-# Test połączenia
-node src/index.js
+# Sprawdź status serwera MCP
+claude mcp list
 
-# Test z Claude Code
-claude mcp test unity-advanced
+# Sprawdź proces Unity
+tasklist | findstr Unity
+
+# Sprawdź port 6401
+netstat -an | findstr 6401
+
+# Sprawdź logi Unity
+> Sprawdź konsole Unity
 ```
 
-## 🛠 Planowane funkcjonalności
+## 🤝 Wkład w Projekt
 
-### v1.1
-- [ ] Unity Bridge Package
-- [ ] Real-time console streaming
-- [ ] Asset Database integration
-- [ ] Scene serialization
+Zapraszamy do współpracy! Aby przyczynić się do rozwoju projektu:
 
-### v1.2  
-- [ ] Package Manager integration
-- [ ] Build pipeline automation
-- [ ] Profiler data access
-- [ ] Timeline integration
+1. **Fork** repozytorium
+2. **Utwórz branch** dla swojej funkcji
+3. **Zaimplementuj** zmiany
+4. **Napisz testy** dla nowych funkcji
+5. **Utwórz Pull Request**
 
-### v1.3
-- [ ] Visual Scripting support
-- [ ] Addressables management
-- [ ] Cloud Build integration
-- [ ] Analytics integration
+### Coding Standards
 
-## 🐛 Rozwiązywanie problemów
+- **C# Unity:** Używaj PascalCase dla metod i właściwości
+- **JavaScript:** Używaj camelCase dla zmiennych i funkcji
+- **PowerShell:** Używaj PascalCase dla parametrów
+- **Dokumentacja:** Zawsze dodawaj komentarze do skomplikowanych funkcji
 
-### MCP nie łączy się z Unity
-1. Sprawdź czy Unity Editor jest uruchomiony
-2. Verificuj ścieżki logów Unity
-3. Sprawdź uprawnienia do plików
+## 📞 Wsparcie
 
-### Brak logów konsoli
-1. Sprawdź lokalizację Editor.log
-2. Verificuj uprawnienia odczytu
-3. Sprawdź czy logi nie są zablokowane
+### Dokumentacja
+- **INSTALLATION.md** - Szczegółowa instrukcja instalacji
+- **TROUBLESHOOTING.md** - Rozwiązywanie problemów
+- **API.md** - Dokumentacja API narzędzi MCP
 
-### Błędy kompilacji MCP
-1. Sprawdź wersję Node.js (>=18.0.0)
-2. Przeinstaluj zależności: `npm ci`
-3. Sprawdź składnię JavaScript
+### Kontakt
+- **Email:** wilendar@gmail.com
+- **GitHub Issues:** Zgłaszanie problemów
+- **GitHub Discussions:** Dyskusje i pytania
 
-## 📝 Changelog
+## 🏆 Funkcje Zaawansowane
 
-### v1.0.0 (2025-07-12)
-- ✅ Podstawowa struktura MCP
-- ✅ Odczyt konsoli Unity
-- ✅ Zarządzanie ustawieniami projektu
-- ✅ Tools dla scen i GameObjects
-- ✅ Framework dla testów i buildów
-- ✅ System zasobów MCP
+### Auto-Start Monitor
+- Automatyczne wykrywanie uruchomienia Unity
+- Retry logic przy błędach połączenia
+- Monitoring procesów Unity w tle
 
-## 🤝 Wsparcie
+### Robust Error Handling
+- Obsługa ThreadAbortException
+- Graceful shutdown TCP connections
+- Automatic reconnection przy błędach
 
-Dla problemów i sugestii:
-1. Sprawdź dokumentację Unity MCP
-2. Verificuj logi Claude Code
-3. Sprawdź kompatybilność wersji
+### Performance Optimizations
+- Connection pooling
+- Lazy loading komponentów
+- Efficient JSON serialization
+
+## 🔗 Linki
+
+- **Claude Code:** https://claude.ai/code
+- **Unity:** https://unity.com/
+- **MCP Protocol:** https://spec.modelcontextprotocol.io/
+
+## 👤 Autor
+
+**Kamil Wiliński**
+- Doświadczony developer Unity i AI tools
+- Specjalista w automatyzacji workflow
+- Twórca narzędzi produktywności
 
 ## 📄 Licencja
 
-MIT License - Zobacz plik LICENSE dla szczegółów
+MIT License - szczegóły w pliku LICENSE
 
 ---
 
-**Stworzone dla projektu Chaos Auto Battler**  
-**Kompatybilne z Claude Code i Unity 6.1**
+**Unity MCP Advanced** - Zrewolucjonizuj swój workflow Unity z Claude Code! 🚀
+
+*Wersja: 1.0.0*  
+*Data: 2025-07-18*
